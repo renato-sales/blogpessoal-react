@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import type Usuario from "../../models/Usuario";
 import { cadastrarUsuario } from "../../services/Service";
+import { ToastAlerta } from "../../utils/ToastAlerta";
 
 function Cadastro() {
   const navigate = useNavigate();
@@ -48,9 +49,9 @@ function Cadastro() {
 
       try {
         await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
-        alert("Usuário cadastrado com sucesso!");
+        ToastAlerta("Usuário cadastrado com sucesso!", "sucesso");
       } catch (error) {
-        alert("Erro ao cadastrar o usuário!");
+        ToastAlerta("Erro ao cadastrar o usuário!", "erro");
       }
     } else {
       alert(
